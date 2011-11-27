@@ -1,4 +1,10 @@
 Fashion2day::Application.routes.draw do
+	match '/login', 	:to => 'admin#login'
+	match '/contact', :to => 'pages#contact'
+  match '/about', 	:to => 'pages#about'
+  root 							:to => 'pages#home'
+	#  resources :users
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
