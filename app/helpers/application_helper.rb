@@ -13,4 +13,9 @@ module ApplicationHelper
   def logo
   	logo = image_tag("logo.png", :alt => "mens fashion today", :class => "round")
   end
+
+  # facebook-link generieren /
+  def facebook
+  	facebook = image_tag("facebook.jpg", :alt => "Besuchen Sie uns auf facebook")
+  end
 end

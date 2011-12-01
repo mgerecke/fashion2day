@@ -71,7 +71,7 @@ nav ul li a:visited {
 nav ul li a:hover {
 	text-decoration: none;
 	color: #A22448;
-	
+
 }
 
 /* footer */
@@ -102,4 +102,10 @@ td.sidebar {
 	padding: 1em;
 	vertical-align: top;
 	background: #ffc;
+}
+
+#facebook img {
+  float: right;
+  padding: 0;
+	background-color: LightSteelBlue;
 }
