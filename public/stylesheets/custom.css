@@ -109,3 +109,17 @@ td.sidebar {
   padding: 0;
 	background-color: LightSteelBlue;
 }
+
+/* form_for */
+#login {
+	 background-color: Gainsboro;
+   width: 70%;
+   padding: 2px;
+}
+
+#login .field {
+  padding: 2px;
+}
+#login .actions {
+ 	padding: 5px 0 5px 2px;
+}
