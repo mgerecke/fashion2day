@@ -36,8 +36,8 @@ a {
 	text-decoration: none;
 }
 	a:hover {
-	color: #069;
-	text-decoration: underline;
+	text-decoration: none;
+	color: #A22448;
 }
 a:visited {
 	color: #069;
@@ -105,7 +105,6 @@ td.sidebar {
 }
 
 #facebook img {
-  float: right;
   padding: 0;
 	background-color: LightSteelBlue;
 }
@@ -113,13 +112,27 @@ td.sidebar {
 /* form_for */
 #login {
 	 background-color: Gainsboro;
-   width: 70%;
+   width: 40%;
    padding: 2px;
 }
 
+#login .label {
+	padding: 0;
+}
+
 #login .field {
-  padding: 2px;
+  padding: 3px 0 1px 3px;
+  margin-left: 4px;
 }
 #login .actions {
  	padding: 5px 0 5px 2px;
+  margin-left: 4px;
+}
+
+.centered {
+ 	text-align: center;
+}
+h3 {
+		color: #A22448;
+    padding-top: 5px;
 }

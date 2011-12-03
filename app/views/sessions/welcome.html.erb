@@ -1,0 +1,20 @@
+<div id="welcome">
+	<p>Hallo <%= @user.name %>. <%= @last_visit %><br />
+	Was m&ouml;chten Sie tun?
+	<% if @user.admin? %>
+	<p>
+	  <font color=#A22448><b>Administrator-Bereich:</font></b>
+	    <ul>
+	      <li><%= link_to "Anwender pflegen", user_path %></li>
+	      <li><%= link_to "Kategorien pflegen", '#' %></li>
+	    </ul>
+	</p>
+	<% end %>
+	<p>
+	  <b>Anwendungs-Bereich:</b>
+	  <ul>
+	    <li><%= link_to "Adressen pflegen", '#' %></li>
+	    <li><%= link_to "abmelden", logout_path %></li>
+	  </ul>
+	</p>
+</div>

@@ -1,10 +1,10 @@
 Fashion2day::Application.routes.draw do
 	match '/login', 	:to => 'sessions#new'
 	match '/logout', 	:to => 'sessions#destroy'
-
+  match '/welcome', :to => 'sessions#welcome'
   root 							:to => 'pages#home'
   resources :users
-  resources :sessions, :only => [:new, :create, :destroy]
+  resources :sessions, :only => [:new, :create, :destroy, :welcome]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

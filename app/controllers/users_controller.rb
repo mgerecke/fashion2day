@@ -12,9 +12,11 @@ class UsersController < ApplicationController
   def create
      @user = User.create(params[:user])
      if @user.save
-
+     	flash.now[:success] ="Anwender wurde gespeichert!"
+      redirect_to :index
      else
-     	render => new
+     	render 'new'
+     end
   end
 
   def show

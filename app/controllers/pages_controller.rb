@@ -3,12 +3,9 @@ class PagesController < ApplicationController
   	@title = "Home"
   end
 
-  def about
-  	@title = "Ueber uns"
-  end
-
-  def contact
-  	@title = "Kontakt"
+  protected
+  def authorize
+  	# für pages-controller muss anwender nicht eingeloggt sein
   end
 
 end
