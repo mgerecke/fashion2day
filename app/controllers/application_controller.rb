@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
 
-  # before_filter :authorize
+  before_filter :authorize, :except => [:login, :create]
+
   protect_from_forgery
   include SessionsHelper
 
@@ -9,7 +10,7 @@ class ApplicationController < ActionController::Base
 
   protected
   def authorize
-    unless !current_user.nil?
+    unless !session[:remember_token].nil?
       flash[:notice]= "Bitte melden Sie sich an!"
       redirect_to login_path
     end

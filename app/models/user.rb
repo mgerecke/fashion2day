@@ -3,22 +3,39 @@ class User < ActiveRecord::Base
 
   attr_accessor :password
   attr_accessible :name, :email, :password, :password_confirmation,
-  								:admin, :last_visit
+  								:last_visit, :admin
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
+	# VALIDATIONS START =========================================
 
   validates :name, 	:presence => true,
   					:length => { :maximum => 50 }
 
 	validates :email, :presence => true,
   					:format => { :with => email_regex },
-            :uniqueness => { :case_sensitive => false }
+            :uniqueness => { :case_sensitive => false },
+            :on => :create
+
+	validates :email, :presence => true,
+  					:format => { :with => email_regex },
+            :uniqueness => { :case_sensitive => false },
+            :on => :update
 
   validates	:password, :confirmation => true,
   					:presence => true,
-            :length => { :within => 6..25 }
+            :length => { :within => 6..25 },
+            :on => :create
 
-	before_save :encrypt_password
+	validates	:password, :confirmation => true,
+  					:presence => true,
+            :length => { :within => 6..25 },
+            :on => :update,
+				    :unless => :skip_validation_on_update
+
+	# VALIDATIONS END ===========================================
+
+  before_save :encrypt_password
 
   def has_password?(submitted_password)
 		encrypted_password = encrypt(submitted_password)
@@ -47,5 +64,14 @@ class User < ActiveRecord::Base
 
   def secure_hash(string)
   	Digest::SHA2.hexdigest(string)
+  end
+
+  # nur wenn beim UPDATE ein neues Passwort vergeben wird,
+  # soll die on=> :update - Validierung durchgeführt werden
+  def skip_validation_on_update
+  	if self.password.blank?
+      return true
+    end
+    false
   end
 end

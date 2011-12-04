@@ -1,0 +1,22 @@
+<h3>Anwender-Liste</h3>
+<div id="list">
+  <table>
+    	<thead>
+    		<tr>
+      		<th>Name</th>
+      		<th>Email</th>
+					<th></th>
+					</tr>
+      </thead>
+    <% for user in @users %>
+      <tr>
+        <td><%= link_to user.name, edit_user_path(user) %></td>
+        <td><%= user.email %></td>
+        <td><%= link_to "loeschen", user, :method => :delete,
+        				:confirm => "Sind Sie sicher?",
+								:title => "Delete #{user.name}" %></td>
+      </tr>
+    <% end %>
+  </table>
+	<p><%= link_to "neuer Anwender", new_user_path %> | <%= link_to "zurueck", welcome_path %></p>
+</div>

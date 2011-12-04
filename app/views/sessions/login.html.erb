@@ -1,0 +1,16 @@
+<h3>login</h3>
+<%= form_for (:session, :url => sessions_path) do | f | %>
+  <div id ="login">
+		<div class="field">
+  		<%= f.label :email %><br />
+    	<%= f.text_field :email %>
+  	</div>
+  	<div class="field">
+  		<%= f.label :password, "Kennwort" %><br />
+    	<%= f.password_field :password %>
+  	</div>
+		<div class="actions">
+  		<%= f.submit "login" %>
+		</div>
+  </div>
+<% end %>
