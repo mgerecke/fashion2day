@@ -1,0 +1,15 @@
+<h3>Kategorie-Liste</h3>
+<p class="cmd-line">
+   <%= link_to 'Neue Kategorie', new_category_path %> |
+	 <%= link_to 'zurueck', welcome_path %>
+</p>
+<div id="list">
+	<table>
+	   <% @categories.each do |category| %>
+	      <tr>
+	          <td><b><%= link_to category.name, edit_category_path(category) %></b></td>
+		        <td><%= link_to 'Zuordnungen', subcategory_path(category) %></td>
+	      </tr>
+	   <% end %>
+	</table>
+</div>

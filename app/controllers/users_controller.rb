@@ -40,14 +40,24 @@ class UsersController < ApplicationController
 
 
   def destroy
-    user = User.find(params[:id]).destroy
-    flash[:success] ="Anwenderdaten wurden geloescht!"
-    redirect_to users_path
+    user = User.find(params[:id])
+    	if not_current_user(user)
+	    	User.find(user).destroy
+    		flash[:success] ="Anwenderdaten wurden geloescht!"
+    		redirect_to users_path
+      else
+        flash[:error] ="Dieser Vorgang ist nicht erlaubt!"
+				redirect_to users_path
+      end
   end
 
   private
 
   def admin_user
      redirect_to root_path unless current_user.admin?
+  end
+
+  def not_current_user(user)
+      current_user != user ? true : false
   end
 end

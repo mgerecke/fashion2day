@@ -1,12 +1,12 @@
 <div id="welcome">
-	<p>Hallo <%= @user.name %>. <%= @last_visit %><br />
+	<p>Hallo <%= @user.name %>. <%= get_last_visit(@user.last_visit) %><br />
 	Was m&ouml;chten Sie tun?
 	<% if @user.admin? %>
 	<p>
 	  <font color=#A22448><b>Administrator-Bereich:</font></b>
 	    <ul>
 	      <li><%= link_to "Anwender pflegen", users_path %></li>
-	      <li><%= link_to "Kategorien pflegen", '#' %></li>
+	      <li><%= link_to "Kategorien pflegen", categories_path %></li>
 	    </ul>
 	</p>
 	<% end %>

@@ -8,9 +8,9 @@ class SessionsController < ApplicationController
     user = User.authenticate(params[:session][:email],
                              params[:session][:password])
     if user.nil?
-      flash.now[:error] = "Email/Passwort Kombination unbekannt!"
+      flash[:error] = "Email/Passwort Kombination unbekannt!"
       @title = "Login"
-      render 'new'
+      redirect_to login_path
     else
       flash.now[:success] = "Hallo, #{user.name}!"
 			@title = "Willkommen"
@@ -28,7 +28,6 @@ class SessionsController < ApplicationController
 
   def welcome
      @user = User.find(session[:remember_token])
-     @last_visit = show_last_visit(@user.last_visit)
   end
 
 end

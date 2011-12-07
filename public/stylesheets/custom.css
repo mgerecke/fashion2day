@@ -140,6 +140,9 @@ td.sidebar {
   margin: 5px;
 }
 
+#list p  {
+  margin: 1px 0 0 7px;
+}
 #list p a {
   margin: 3px 0 0 7px;
 }
@@ -167,6 +170,9 @@ td.sidebar {
 }
 
 h3 {
-		color: #A22448;
-    padding: 5px 0 0 5px;
+	color: #A22448;
+  padding: 5px 0 0 5px;
+}
+.cmd-line a {
+  padding-left: 5px;
 }

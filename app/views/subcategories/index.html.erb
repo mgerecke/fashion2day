@@ -1,0 +1,20 @@
+<h3>Unterkategorie</h3>
+<p class="cmd-line">
+	<%= link_to 'Neue Unterkategorie', new_subcategory_path %> |
+	<%= link_to 'Kategorie-Uebersicht', categories_path %>
+  <%= link_to 'zurueck', categories_path %>
+</p>
+
+<div id="list">
+	<table>
+	  <tr>
+	    <th>Name</th>
+	  </tr>
+
+		<% @subcategories.each do |subcategory| %>
+	  	<tr>
+	    	<td><%= link_to subcategory.name, edit_subcategory_path(subcategory) %></td>
+	  	</tr>
+		<% end %>
+	</table>
+</div>

@@ -5,6 +5,8 @@ Fashion2day::Application.routes.draw do
   root 							:to => 'pages#home'
   resources :users
   resources :sessions, :only => [:login, :create, :destroy, :welcome]
+  resources :categories
+	resources :subcategories
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

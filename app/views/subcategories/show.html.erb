@@ -1,0 +1,19 @@
+<h3>Kategorie-Subkategorie</h3>
+<p class="cmd-line">
+   <%= link_to 'Neue Zuordnung', new_subcategory_path %> |
+	 <%= link_to 'zurueck', categories_path %>
+</p>
+<div id="list">
+	<table>
+     <thead>
+     	<th><b><%= @category.name %></b></th>
+			<th></th>
+     </thead>
+     <% @subcategories.each do |subcategory| %>
+	      <tr>
+	          <td><%= subcategory.name %></td>
+						<td><%= link_to "entfernen", subcategory, :method => :delete, :confirm => "Zuordnung entfernen?" %></td>
+	      </tr>
+	   <% end %>
+	</table>
+</div>

@@ -21,7 +21,7 @@ module ApplicationHelper
   end
 
   def german_time(datetime)
-    datetime.strftime("%d.%m.%y %H:%M:%S")
+    datetime.strftime("%d.%m.%y um %H:%M:%S")
   end
 
   def german_date(date)

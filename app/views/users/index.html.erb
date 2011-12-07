@@ -1,4 +1,7 @@
 <h3>Anwender-Liste</h3>
+<p class="cmd-line">
+	<%= link_to "neuer Anwender", new_user_path %> | <%= link_to "zurueck", welcome_path %>
+</p>
 <div id="list">
   <table>
     	<thead>
@@ -18,5 +21,4 @@
       </tr>
     <% end %>
   </table>
-	<p><%= link_to "neuer Anwender", new_user_path %> | <%= link_to "zurueck", welcome_path %></p>
 </div>
