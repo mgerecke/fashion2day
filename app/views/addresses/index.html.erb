@@ -1,0 +1,34 @@
+<h3>Adressen</h3>
+<p class="cmd-line">
+   <%= link_to 'Neue Adresse', new_address_path %> |
+	 <%= link_to 'zurueck', welcome_path %>
+</p>
+<div id="adrsuche">
+	<table>
+	  <tr>
+	      <td><%= label :suche, 'Suchen' %></td>
+	  </tr>
+	  <% form_tag addresses_path, :method => 'get' do %>
+	    <tr>
+      <td><%= select_tag :spalte,
+	            options_from_collection_for_select(@lookups, "id", "anzeige", @curselected),
+	            :prompt => "Bitte waehlen" %></td>
+        <td><%= text_field_tag :search, params[:search] %></td>
+	      <td><%= submit_tag "los", :name => nil %></td>
+	    </tr>
+	  <% end %>
+	</table>
+</div>
+<div id="adrlist">
+	<table>
+	   <% @addresses.each do |address| %>
+	      <tr>
+	          <td><%= link_to address.firma, edit_address_path(address) %></td>
+            <td class="sidebar">
+						<strong><%= address.vorname %>&nbsp;<%= address.nachname %></strong><br />
+            <%= mail_to address.email, address.email %><br />
+						</td>
+	      </tr>
+	   <% end %>
+	</table>
+</div>

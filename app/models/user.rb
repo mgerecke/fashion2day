@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 
   attr_accessor :password
   attr_accessible :name, :email, :password, :password_confirmation,
-  								:last_visit
+  								:last_visit, :aktiv
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 

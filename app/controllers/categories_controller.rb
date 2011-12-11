@@ -32,7 +32,6 @@ class CategoriesController < ApplicationController
 
   # PUT /categories/1
   def update
-    params[:category][:existing_subcategory_attributes] ||= {}
     @category = Category.find(params[:id])
 
     if @category.update_attributes(params[:category])

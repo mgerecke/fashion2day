@@ -8,16 +8,21 @@ class SessionsController < ApplicationController
     user = User.authenticate(params[:session][:email],
                              params[:session][:password])
     if user.nil?
-      flash[:error] = "Email/Passwort Kombination unbekannt!"
+    	flash[:error] = "Email/Passwort Kombination unbekannt!"
       @title = "Login"
       redirect_to login_path
     else
-      flash.now[:success] = "Hallo, #{user.name}!"
-			@title = "Willkommen"
-      sign_in user
-      redirect_to welcome_path
+    	if !user.aktiv?
+				flash[:error] = "Anwender-Konto ist deaktiviert!"
+				@title = "Login"
+      	redirect_to login_path
+      else
+      	flash.now[:success] = "Hallo, #{user.name}!"
+				@title = "Willkommen"
+      	sign_in user
+      	redirect_to welcome_path
+    	end
     end
-
   end
 
   def destroy

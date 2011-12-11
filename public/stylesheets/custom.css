@@ -101,7 +101,6 @@ td.sidebar {
 	width: 30%;
 	padding: 1em;
 	vertical-align: top;
-	background: #ffc;
 }
 
 #facebook img {
@@ -109,11 +108,27 @@ td.sidebar {
 	background-color: LightSteelBlue;
 }
 
-/* form_for */
+/* style für login-form */
+#start {
+	 background-color: Gainsboro;
+   width: 50%;
+   padding: 3px;
+}
+/* style für fast alle Formulare */
 #login {
 	 background-color: Gainsboro;
-   width: 70%;
+   width: 60%;
    padding: 3px;
+}
+
+#login form {
+	padding: 0;
+  margin: 0;
+}
+
+#login table {
+	padding: 0;
+  margin: 0;
 }
 
 #login .field label {
@@ -127,9 +142,9 @@ td.sidebar {
   padding: 0;
   margin-left: 50px;
 }
-#login .actions {
- 	padding: 5px 0 5px 0;
-  margin-left: 3px;
+.actions {
+ 	padding: 5px 0 5px 2px;
+  margin-left: 3px 0 3px 0;
 }
 
 #list {
@@ -145,6 +160,57 @@ td.sidebar {
 }
 #list p a {
   margin: 3px 0 0 7px;
+}
+
+#adrlist {
+	margin: 0;
+	background-color: Gainsboro;
+  width: 90%;
+  padding: 1px 3px 1px 4px;
+  margin: 2px 0 0 5px;
+  font-size: small;
+}
+
+#adrlist td  {
+  padding: 1px 0 1px 0;
+  margin: 0;
+}
+#adrlist p a {
+  margin: 3px 0 0 7px;
+}
+#adrsuche {
+ 	width: 60%;
+  background-color: Gainsboro;
+  margin: 0 0 0 5px;
+  padding: 0;
+}
+
+#adrsuche table {
+ 	width: 55%;
+  margin: 0 0 5px 0;
+  padding: 0;
+}
+
+#adresse {
+	 background-color: Gainsboro;
+   padding: 3px;
+   margin: 0 0 0 5px;
+}
+
+#adresse table {
+ 	width: 100%;
+  margin: 0 0 5px 0;
+  padding: 0;
+}
+
+#login form {
+	padding: 0;
+  margin: 0;
+}
+
+#login table {
+	padding: 0;
+  margin: 0;
 }
 
 #error_explanation p {
@@ -171,8 +237,19 @@ td.sidebar {
 
 h3 {
 	color: #A22448;
-  padding: 5px 0 0 5px;
+  padding: 1px 0 0 5px;
+  margin: 0 0 1px 0;
+}
+
+.cmd-line  {
+  padding: 1px 0 1px 0;
+  margin: 0;
 }
 .cmd-line a {
-  padding-left: 5px;
+  padding: 0 0 0 5px;
+  margin: 0;
+}
+.cmd-line p {
+  padding: 0 0 0 5px;
+  margin: 0;
 }

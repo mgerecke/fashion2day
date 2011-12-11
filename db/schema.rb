@@ -10,10 +10,51 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111206200505) do
+ActiveRecord::Schema.define(:version => 20111210140539) do
+
+  create_table "addresses", :force => true do |t|
+    t.string   "firma"
+    t.string   "vorname"
+    t.string   "nachname"
+    t.string   "position"
+    t.string   "briefkontakt"
+    t.string   "strasse"
+    t.string   "hausnr"
+    t.string   "plz"
+    t.string   "ort"
+    t.string   "land"
+    t.string   "fon"
+    t.string   "fax"
+    t.string   "email"
+    t.string   "web"
+    t.string   "subcategory"
+    t.string   "user"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "addresses", ["email"], :name => "index_addresses_on_email", :unique => true
+  add_index "addresses", ["firma"], :name => "index_addresses_on_firma"
+  add_index "addresses", ["nachname"], :name => "index_addresses_on_nachname"
 
   create_table "categories", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "countries", :force => true do |t|
+    t.string   "code",       :null => false
+    t.string   "engl",       :null => false
+    t.string   "de",         :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "lookups", :force => true do |t|
+    t.string   "thema",      :null => false
+    t.string   "anzeige",    :null => false
+    t.string   "intern",     :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -34,6 +75,7 @@ ActiveRecord::Schema.define(:version => 20111206200505) do
     t.datetime "updated_at"
     t.string   "encrypted_password"
     t.string   "salt"
+    t.boolean  "aktiv",              :default => true
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

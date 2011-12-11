@@ -1,3 +1,4 @@
+<p class="cmd-line"><%= link_to "zurueck", users_path %></p>
 <%= form_for(@user) do |f| %>
   <% if request.post? %>
   	<%= render 'shared/error_messages', :object => f.object %>
@@ -21,9 +22,16 @@
 	    	<td><%= f.password_field :password_confirmation %></td>
 	  	</tr>
 	  	<tr>
+	    	<td><%= f.label :Aktiv, "Ist Anwender aktiv?" %></td>
+	    	<td><%= f.check_box :aktiv %></td>
+	  	</tr>
+  	</table>
+  </div>
+  <div>
+   	<table>
+   		<tr>
 				<td><%= f.submit "speichern" %></td>
 			</tr>
   	</table>
   </div>
 <% end %>
-<p><%= link_to "zurueck", users_path %></p>

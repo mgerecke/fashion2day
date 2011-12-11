@@ -1,0 +1,68 @@
+<%= form_for(@address) do |f| %>
+   <% if @address.errors.any? %>
+      <div id="error_explanation">
+      <h2><%= pluralize(@address.errors.count, "error") %> prohibited this address from being saved:</h2>
+      <ul>
+         <% @address.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+         <% end %>
+      </ul>
+   <% end %>
+   <div id="adresse">
+   	<table>
+	      <tr>
+	      	<td><%= f.label :firma %></td>
+	        <td><%= f.text_field :firma, :size => 30 %></td>
+	      	<td><%= f.label :fon, 'Telefon' %></td>
+	        <td><%= f.text_field :fon %></td>
+	      </tr>
+	      <tr>
+	      	<td><%= f.label :nachname %></td>
+	        <td><%= f.text_field :nachname %></td>
+	        <td><%= f.label :fax %></td>
+	        <td><%= f.text_field :fax %></td>
+	      </tr>
+	      <tr>
+	      	<td><%= f.label :vorname %>
+	        <td><%= f.text_field :vorname %></td>
+		      <td><%= f.label :email %></td>
+	        <td><%= f.text_field :email %></td>
+	      </tr>
+	      <tr>
+	      	<td><%= f.label :position %></td>
+	        <td><%= f.text_field :position %></td>
+	      	<td><%= f.label :web %></td>
+	        <td><%= f.text_field :web %></td>
+	      </tr>
+	      <tr>
+	      	<td><%= f.label :strasse %></td>
+	        <td><%= f.text_field :strasse %></td>
+	         <td><%= f.label :subcategory, "Kategorie" %></td>
+	         <td><%= f.text_field :subcategory %></td>
+	      </tr>
+	      <tr>
+	         <td><%= f.label :hausnr %></td>
+	         <td><%= f.text_field :hausnr, :size => 5 %></td>
+           <td><%= f.label :briefkontakt %></td>
+	        <td><%= f.text_field :briefkontakt %></td>
+	      </tr>
+	      <tr>
+	         <td><%= f.label :plz %></td>
+	         <td><%= f.text_field :plz , :size => 5%></td>
+	      </tr>
+	      <tr>
+	         <td><%= f.label :ort %></td>
+	         <td><%= f.text_field :ort %></td>
+	      </tr>
+	      <tr>
+        <td><%= f.label :land, "Land" %></td>
+	      <td><%= f.select :land,
+	        Country.find(:all).collect{|d| [d.de, d.id]},
+	        :prompt => "Bitte waehlen" %></td>
+	      </tr>
+	   </table>
+	</div>
+  <div class="actions">
+  	<%= f.submit "speichern" %>
+  </div>
+<% end %>
