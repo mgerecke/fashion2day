@@ -1,5 +1,9 @@
 <header>
-  <%= link_to logo, root_path %>
+  <% if signed_in? %>
+  	<%= link_to logo, welcome_path, :title => "zur Uebersicht" %>
+  <% else %>
+		<%= link_to logo, root_path, :title => "Home" %>
+  <% end %>
   <nav class ="round">
   	<ul>
     <% if signed_in? %>

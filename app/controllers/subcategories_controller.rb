@@ -1,5 +1,6 @@
 class SubcategoriesController < ApplicationController
-	before_filter :admin_user, :only => [:new, :create, :edit, :update, :destroy]
+	include ApplicationHelper
+	before_filter :admin_user
 
   # GET /subcategories
   # GET /subcategories.json
@@ -16,6 +17,7 @@ class SubcategoriesController < ApplicationController
 
   # GET /subcategories/new
   def new
+    @category = "2"
     @subcategory = Subcategory.new
   end
 
@@ -57,11 +59,4 @@ class SubcategoriesController < ApplicationController
     		redirect_to subcategory_path(@subcategory.category_id)
   		end
   end
-
-  private
-
-  def admin_user
-     redirect_to root_path unless current_user.admin?
-  end
-
 end

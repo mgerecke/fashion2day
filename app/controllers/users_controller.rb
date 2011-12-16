@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-
-  before_filter :admin_user, :only => [:new, :create, :edit, :update, :destroy]
+	include ApplicationHelper
+	before_filter :admin_user
 
   def index
 		@title = "Anwender-Liste"
@@ -52,10 +52,6 @@ class UsersController < ApplicationController
   end
 
   private
-
-  def admin_user
-     redirect_to root_path unless current_user.admin?
-  end
 
   def not_current_user(user)
       current_user != user ? true : false

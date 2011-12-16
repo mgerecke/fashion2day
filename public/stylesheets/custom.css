@@ -75,7 +75,6 @@ nav ul li a:hover {
 }
 
 /* footer */
-
 footer {
 	text-align: center;
   margin-top: 10px;
@@ -108,6 +107,12 @@ td.sidebar {
 	background-color: LightSteelBlue;
 }
 
+#adresse select:focus {
+	border: solid 2px #6699FF;
+}
+#adresse input:focus {
+	border: solid 2px #6699FF;
+}
 /* style für login-form */
 #start {
 	 background-color: Gainsboro;
@@ -178,29 +183,74 @@ td.sidebar {
 #adrlist p a {
   margin: 3px 0 0 7px;
 }
-#adrsuche {
- 	width: 60%;
-  background-color: Gainsboro;
+
+#adrsuche form {
+ 	width: 91%;
+  /* background-color: Gainsboro; */
   margin: 0 0 0 5px;
   padding: 0;
 }
 
-#adrsuche table {
- 	width: 55%;
-  margin: 0 0 5px 0;
-  padding: 0;
+#adrsuche select {
+ 	width: 15%;
+}
+#adrsuche label {
+ 	padding: 0;
 }
 
 #adresse {
 	 background-color: Gainsboro;
-   padding: 3px;
-   margin: 0 0 0 5px;
+   padding: 1px;
+   margin: 0 0 0 2px;
 }
 
-#adresse table {
- 	width: 100%;
-  margin: 0 0 5px 0;
+#adresse .left {
+	float: left;
+  padding: 0 1em 1em 1em;
+	vertical-align: top;
+}
+
+#adresse .right {
+	float: right;
+  padding: 0 1em 1em 1em;
+	vertical-align: top;
+}
+
+#adresse label {
+  display: block;
+  float: left;
+  width: 65px;
+  padding: 5px 0 1px 0;
+  margin: 0;
+}
+#adresse .left .small input {
+  width: 40px;
+}
+
+#adresse .left input, .left select {
+  width: 270px;
+  margin-bottom: 2px;
+}
+
+#adresse .right input, .right select {
+  width: 200px;
+  margin-bottom: 2px;
+  }
+#adresse p {
+  margin: 0 0 0 13px;
   padding: 0;
+  font-size: 90%;
+}
+
+#adresse div {
+	margin: 0;
+  padding: 0;
+}
+.go {
+  clear: both;
+}
+.go input{
+  margin: 0 0 3px 15px;
 }
 
 #login form {

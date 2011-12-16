@@ -1,24 +1,32 @@
 class Address < ActiveRecord::Base
-	email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  attr_accessor :update_user
+  email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
+  before_save :get_user
 
   #------ Validations -------------------------------------
-  validate 	:firma, :briefkontakt, :position, :strasse,
-  					:hausnr, :plz, :ort,
-            :land, :fon, :email, :presence => true
+
+  validates :firma, :presence => true
+  validates :briefkontakt, :presence => true
+	validates :position, :presence => true
+	validates :strasse, :presence => true
+  validates :plz, :presence => true
+  validates :ort, :presence => true
+  validates :land, :presence => true
+	validates :fon, :presence => true
+	validates :user, :presence => true, :on => [:create]
+	validates :category, :presence => true
+	validates :subcategory, :presence => true
 
 	validates :email, :presence => true,
   					:format => { :with => email_regex },
             :uniqueness => { :case_sensitive => false },
-            :on => :create
-            #:message => "Bitte Email pruefen"
+            :on => [:create]
 
 	validates :email, :presence => true,
   					:format => { :with => email_regex },
             :uniqueness => { :case_sensitive => false },
             :on => :update
-      			#:message => "Bitte Email pruefen"
-
 
 	def self.search(search, spalte)
   	if search
@@ -38,4 +46,10 @@ class Address < ActiveRecord::Base
   		find(:all, :order => :firma)
   	end
   end
+
+  # bei updates den aktuellen User als User festhalten
+  def get_user
+  	self.user = update_user
+  end
+
 end

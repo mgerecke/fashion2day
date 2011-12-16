@@ -21,7 +21,7 @@ module ApplicationHelper
   end
 
   def german_time(datetime)
-    datetime.strftime("%d.%m.%y um %H:%M:%S")
+    (datetime + 1.hour).strftime("%d.%m.%y um %H:%M:%S Uhr")
   end
 
   def german_date(date)
@@ -30,5 +30,14 @@ module ApplicationHelper
 
   def german_date_long(date)
     date.strftime("%d.%m.%Y")
+  end
+
+  protected
+  def admin_user
+  	if signed_in?
+	     redirect_to welcome_path unless current_user.admin?
+    else
+	     redirect_to root_path unless current_user.admin?
+    end
   end
 end

@@ -23,10 +23,10 @@ module SessionsHelper
 
   def get_last_visit(last_visit)
      return "Dies ist ihr erster Besuch!" if last_visit.nil?
-     return "Der letzte Besuch war am #{german_time(last_visit + 1.hour)}."
+     return "Der letzte Besuch war am #{german_time(last_visit)}."
   end
 
-  private
+  protected
 
   def user_from_remember_token
 		return nil if session[:remember_token].nil?

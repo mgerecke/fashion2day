@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111210140539) do
+ActiveRecord::Schema.define(:version => 20111216203505) do
 
   create_table "addresses", :force => true do |t|
     t.string   "firma"
@@ -31,11 +31,9 @@ ActiveRecord::Schema.define(:version => 20111210140539) do
     t.string   "user"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "category"
+    t.string   "update_user"
   end
-
-  add_index "addresses", ["email"], :name => "index_addresses_on_email", :unique => true
-  add_index "addresses", ["firma"], :name => "index_addresses_on_firma"
-  add_index "addresses", ["nachname"], :name => "index_addresses_on_nachname"
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -47,6 +45,12 @@ ActiveRecord::Schema.define(:version => 20111210140539) do
     t.string   "code",       :null => false
     t.string   "engl",       :null => false
     t.string   "de",         :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "lettercontacts", :force => true do |t|
+    t.string   "description", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

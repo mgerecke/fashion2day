@@ -20,6 +20,7 @@ class AddressesController < ApplicationController
   # GET /addresses/1/edit
   def edit
     @address = Address.find(params[:id])
+    user = User.find(current_user)
   end
 
   # POST /addresses
@@ -29,7 +30,6 @@ class AddressesController < ApplicationController
          flash[:success] = "Adresse wurde angelegt!"
          redirect_to addresses_path
       else
-        flash[:error] = "Adresse konnte NICHT gespeichert werden!"
         render 'new'
       end
   end
@@ -37,11 +37,12 @@ class AddressesController < ApplicationController
   # PUT /addresses/1
   def update
     @address = Address.find(params[:id])
-      if @address.update_attributes(params[:address])
+    cuser = User.find(current_user)
+    @address.update_user = cuser.name
+    	if @address.update_attributes(params[:address])
         flash[:notice] = "Adresse wurde geaendert!"
         redirect_to addresses_path
       else
-         flash[:notice] = "Adresse konnte NICHT gespeichert werden!"
          render 'edit'
       end
   end

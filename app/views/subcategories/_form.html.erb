@@ -17,6 +17,7 @@
 	      <td><%= f.label :category_id, "Kategorie" %></td>
 	      <td><%= f.select :category_id,
 	        Category.find(:all).collect{|d| [d.name, d.id]},
+          :selected => @category,
 	        :prompt => "Bitte waehlen" %></td>
 	    </tr>
 

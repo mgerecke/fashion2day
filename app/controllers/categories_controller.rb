@@ -1,4 +1,7 @@
 class CategoriesController < ApplicationController
+  include ApplicationHelper
+	before_filter :admin_user
+
   # GET /categories
   def index
     @categories = Category.all
