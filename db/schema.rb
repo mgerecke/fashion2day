@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111216203505) do
+ActiveRecord::Schema.define(:version => 20111211200030) do
 
   create_table "addresses", :force => true do |t|
     t.string   "firma"
@@ -27,13 +27,16 @@ ActiveRecord::Schema.define(:version => 20111216203505) do
     t.string   "fax"
     t.string   "email"
     t.string   "web"
-    t.string   "subcategory"
+    t.integer  "category_id"
+    t.integer  "subcategory_id"
     t.string   "user"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "category"
-    t.string   "update_user"
   end
+
+  add_index "addresses", ["email"], :name => "index_addresses_on_email", :unique => true
+  add_index "addresses", ["firma"], :name => "index_addresses_on_firma"
+  add_index "addresses", ["nachname"], :name => "index_addresses_on_nachname"
 
   create_table "categories", :force => true do |t|
     t.string   "name"

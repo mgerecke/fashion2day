@@ -1,7 +1,8 @@
 <h3>Adressen</h3>
 <p class="cmd-line">
    <%= link_to 'Neue Adresse', new_address_path %>
-	  &nbsp;|&nbsp;<%= link_to 'zurueck', welcome_path %>
+		&nbsp;|&nbsp;<%= link_to 'Excel-Export', addresses_path(:format => :csv) %>
+    &nbsp;|&nbsp;<%= link_to 'zurueck', welcome_path %>
 </p>
 <div id="adrsuche">
 	<% form_tag addresses_path, :method => 'get' do %>
@@ -13,17 +14,23 @@
 	  <%= submit_tag "los", :name => nil %>
 	<% end %>
 </div>
+<div class="digg_pagination">
+	<%= will_paginate  %>
+</div>
 <div id="adrlist">
 	<table>
-	   <% @addresses.each do |address| %>
-	      <tr>
-	        <td><%= link_to address.firma, edit_address_path(address) %></td>
-	        <td class="sidebar">
-	        <strong><%= address.vorname %>&nbsp;<%= address.nachname %></strong><br />
-          <%= address.subcategory %><br />
-	        <%= mail_to address.email, address.email %><br />
-	        </td>
-      </tr>
-	   <% end %>
+		<% @addresses.each do |address| %>
+  	  <tr>
+	      <td><%= link_to address.firma, edit_address_path(address) %></td>
+	      <td class="sidebar">
+	      <strong><%= address.vorname %>&nbsp;<%= address.nachname %></strong><br />
+	      <%= address.subcategory.name %><br />
+	      <%= mail_to address.email, address.email %><br />
+	      </td>
+	    </tr>
+		<% end %>
 	</table>
+</div>
+<div class="digg_pagination">
+<%= will_paginate %>
 </div>

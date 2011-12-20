@@ -1,8 +1,7 @@
 <h3>Kategorie-Liste</h3>
 <p class="cmd-line">
-   <%= link_to 'Neue Kategorie', new_category_path %> |
-   <%= link_to 'Neue Unterkategorie', new_subcategory_path %> | 
-	 <%= link_to 'zurueck', welcome_path %>
+   <%= link_to 'Neue Kategorie', new_category_path %>
+	 &nbsp;|&nbsp;<%= link_to 'zurueck', welcome_path %>
 </p>
 <div id="list">
 	<table>
@@ -10,7 +9,7 @@
 	      <tr>
 	          <td><b><%= link_to category.name, edit_category_path(category) %></b></td>
 		        <td><%= link_to 'Zuordnungen', subcategory_path(category) %></td>
-	      </tr>
+        </tr>
 	   <% end %>
 	</table>
 </div>

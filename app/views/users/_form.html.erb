@@ -1,8 +1,14 @@
 <p class="cmd-line"><%= link_to "zurueck", users_path %></p>
 <%= form_for(@user) do |f| %>
-  <% if request.post? %>
-  	<%= render 'shared/error_messages', :object => f.object %>
-  <% end %>
+	<% if @user.errors.any? %>
+    <div id="error_explanation">
+    <p>Speicherung des Anwenders wurde verhindert: <%= pluralize(@user.errors.count, "Fehler") %> </p>
+    <ul>
+       <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+       <% end %>
+    </ul>
+	<% end %>
   <div id ="login">
     <table>
       <tr>

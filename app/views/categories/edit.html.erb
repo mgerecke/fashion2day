@@ -1,3 +1,5 @@
 <h3>Kategorie bearbeiten</h3>
-<p class="cmd-line"><%= link_to 'zurueck', categories_path %></p>
+<p class="cmd-line">
+	 <%= link_to 'Neue Zuordnung', new_subcategory_path(:id => @category.id) %>
+   &nbsp;|&nbsp;<%= link_to 'zurueck', categories_path %></p>
 <%= render 'form' %>

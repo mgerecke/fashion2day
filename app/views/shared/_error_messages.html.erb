@@ -1,10 +1,10 @@
-<div id="error_explanation">
-	<% if @user.errors.any? %>
-		<p>Fehlermeldung:</p>
-		<ul>
-			<% @user.errors.full_messages.each do |msg| %>
-			<li><%= msg %></li>
-			<% end %>
-		</ul>
-	<% end %>
-</div>
+<% if object.errors.any? %>
+	<div id="error_explanation">
+	  <p>Speicherung wurde verhindert: <%= pluralize(object.errors.count, "Fehler") %></p>
+	  <ul>
+	  <% object.errors.full_messages.each do |msg| %>
+	    <li><%= msg %></li>
+	  <% end %>
+	  </ul>
+	</div>
+<% end %>

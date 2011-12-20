@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+
   include ApplicationHelper
 	before_filter :admin_user
 
@@ -40,17 +41,16 @@ class CategoriesController < ApplicationController
     if @category.update_attributes(params[:category])
         flash[:success] = "Kategorie wurde geandert."
         redirect_to categories_path
-      else
+    else
         render "edit"
-      end
     end
   end
 
-  # DELETE /categories/1
   def destroy
     @category = Category.find(params[:id])
     if @category.destroy
 			 flash[:success] = "Kategorie wurde geloescht!"
 			redirect_to categories_url
     end
+  end
 end

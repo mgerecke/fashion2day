@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-	include ApplicationHelper
+
+  include ApplicationHelper
 	before_filter :admin_user
 
   def index

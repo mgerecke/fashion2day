@@ -17,8 +17,9 @@ class SubcategoriesController < ApplicationController
 
   # GET /subcategories/new
   def new
-    @category = "2"
+    category = Category.find(params[:id])
     @subcategory = Subcategory.new
+    @subcategory.category_id = category.id
   end
 
   # GET /subcategories/1/edit

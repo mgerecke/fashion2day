@@ -15,13 +15,14 @@ class CreateAddresses < ActiveRecord::Migration
 	    t.string :fax
 	    t.string :email, :unique => true
 	    t.string :web
-	    t.string :subcategory
+      t.integer :category_id
+      t.integer :subcategory_id
 	    t.string :user
 		  t.timestamps
     end
   end
 
   def self.down
-  	drop_table :addresses 
+  	drop_table :addresses
   end
 end

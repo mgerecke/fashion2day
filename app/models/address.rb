@@ -1,4 +1,8 @@
 class Address < ActiveRecord::Base
+
+  belongs_to :category
+  belongs_to :subcategory
+
   attr_accessor :update_user
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
@@ -14,9 +18,9 @@ class Address < ActiveRecord::Base
   validates :ort, :presence => true
   validates :land, :presence => true
 	validates :fon, :presence => true
-	validates :user, :presence => true, :on => [:create]
-	validates :category, :presence => true
-	validates :subcategory, :presence => true
+	#validates :user, :presence => true, :on => [:create]
+	validates :category_id, :presence => true
+	validates :subcategory_id, :presence => true
 
 	validates :email, :presence => true,
   					:format => { :with => email_regex },

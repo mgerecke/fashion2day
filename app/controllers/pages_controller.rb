@@ -5,7 +5,7 @@ class PagesController < ApplicationController
 
   protected
   def authorize
-  	# für pages-controller muss anwender nicht eingeloggt sein
+  	# für pages-controller muss Anwender nicht eingeloggt sein
   end
 
 end

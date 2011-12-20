@@ -1,6 +1,6 @@
 <h3>Kategorie-Subkategorie</h3>
 <p class="cmd-line">
-   <%= link_to 'Neue Zuordnung', new_subcategory_path %> |
+   <%= link_to 'Neue Zuordnung', new_subcategory_path(:id => @category.id) %> |
 	 <%= link_to 'zurueck', categories_path %>
 </p>
 <div id="list">
