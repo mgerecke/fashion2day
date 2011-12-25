@@ -32,22 +32,24 @@ class Address < ActiveRecord::Base
             :uniqueness => { :case_sensitive => false },
             :on => :update
 
-	def self.search(search, spalte)
+	def self.search(search, spalte, sort)
   	if search
       if spalte
       	case spalte
       		when "1" #email
-      			find(:all, :conditions => ['email LIKE ?', "%#{search}%"])
+      			find(:all, :conditions => ['email LIKE ?', "%#{search}%"], :order => sort )
       		when "2" #position
-      			find(:all, :conditions => ['position LIKE ?', "%#{search}%"])
+      			find(:all, :conditions => ['position LIKE ?', "%#{search}%"], :order => sort )
       		when "3" #name
-      			find(:all, :conditions => ['nachname LIKE ?', "%#{search}%"])
+      			find(:all, :conditions => ['nachname LIKE ?', "%#{search}%"], :order => sort )
       		when "4" #firma
-      			find(:all, :conditions => ['firma LIKE ?', "%#{search}%"])
+      			find(:all, :conditions => ['firma LIKE ?', "%#{search}%"], :order => sort)
+      		when "5" #subcategory
+            find(:all, :conditions => ['subcategory_id in (select id from subcategories where name like ?)', "%#{search}%"] , :order => sort)
 				end
       end
     else
-  		find(:all, :order => :firma)
+  		find(:all, :order => 'firma')
   	end
   end
 

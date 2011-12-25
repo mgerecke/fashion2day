@@ -58,6 +58,9 @@ class SubcategoriesController < ApplicationController
      if @subcategory.destroy
 		 		flash[:success] = "Subkategorie wurde geloescht."
     		redirect_to subcategory_path(@subcategory.category_id)
-  		end
+     else
+     		flash[:error] = "Subkategorie kann nicht entfernt werden (wird noch verwendet)."
+     		redirect_to  subcategory_path(@subcategory.category_id)
+     end
   end
 end

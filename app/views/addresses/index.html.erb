@@ -1,18 +1,31 @@
 <h3>Adressen</h3>
 <p class="cmd-line">
    <%= link_to 'Neue Adresse', new_address_path %>
-		&nbsp;|&nbsp;<%= link_to 'Excel-Export', addresses_path(:format => :csv) %>
     &nbsp;|&nbsp;<%= link_to 'zurueck', welcome_path %>
 </p>
-<div id="adrsuche">
+<div>
+  <span class="export">
 	<% form_tag addresses_path, :method => 'get' do %>
   	<%= label_tag :suche, 'Suchen' %>
     <%= select_tag :spalte,
 	  			options_from_collection_for_select(@lookups, "id", "anzeige", @curselected),
 	      	:prompt => "Bitte waehlen" %>
-    <%= text_field_tag :search, params[:search], :size => 50 %>
+    <%= text_field_tag :search, params[:search], :size => 20 %>
+    <%= label_tag :suche, 'sortieren nach' %>
+    <%= select_tag :sort,
+	  			options_from_collection_for_select(@sorts, "intern", "anzeige", @cursort),
+	      	:prompt => "Bitte waehlen" %>
 	  <%= submit_tag "los", :name => nil %>
-	<% end %>
+		<% end %>
+    <% form_tag addresses_path (:format => :csv), :method => 'get' do %>
+			<%= text_field_tag :spalte, params[:spalte], :type => :hidden %>
+			<%= text_field_tag :search, params[:search], :type => :hidden %>
+			<%= text_field_tag :sort, params[:sort], :type => :hidden %>
+			<span class="excel">
+  			<%= submit_tag "Excel", :name => nil %>
+			</span>
+  	<% end %>
+  </span
 </div>
 <div class="digg_pagination">
 	<%= will_paginate  %>

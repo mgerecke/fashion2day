@@ -6,12 +6,23 @@ class AddressesController < ApplicationController
 
   # GET /addresses
   def index
-  	@curselected = params[:spalte] || "1"
+
+    @curselected = params[:spalte] ||= session[:spalte]
+    @cursuchwert = params[:search] ||= session[:search]
+    @cursort = params[:sort] ||= session[:sort]
+
   	@lookups = Lookup.all
-    @addresses = Address.search(params[:search], params[:spalte]).paginate(:page => params[:page], :per_page => 15)
-    	respond_to do |format|
+    @sorts = Sort.all
+    @addresses = Address.search(params[:search], params[:spalte], params[:sort]).paginate(:page => params[:page], :per_page => 15)
+
+    # Auswahl merken für Folge-Aktionen (Wiederaufruf der Adress-Maske)
+    session[:spalte] = @curselected
+    session[:search] = @cursuchwert
+    session[:sort] 	 = @cursort
+
+      respond_to do |format|
 				format.html
-    		format.csv { export_csv(@addresses) }
+    		format.csv { export_csv }
     	end
   end
 
@@ -69,8 +80,7 @@ class AddressesController < ApplicationController
 
   protected
 
-  def export_csv(addresses)
-
+  def export_csv
     filename="Adressen_" + Time.now.strftime("%Y-%m-%d-%H%M%S") + ".csv"
     content = FasterCSV.generate(:col_sep => ";") do |csv|
     	csv << [
@@ -91,7 +101,7 @@ class AddressesController < ApplicationController
 	    "Kategory",
 	    "Subkategorie"
     	]
-    	addresses.each do |address|
+    	@addresses.each do |address|
 	      csv << [
 	      address.firma,
 	      address.vorname,

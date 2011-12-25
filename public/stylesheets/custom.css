@@ -108,11 +108,13 @@ td.sidebar {
 }
 
 #adresse select:focus {
-	border: solid 2px #6699FF;
+	border: solid 1px #6699FF;
 }
+
 #adresse input:focus {
-	border: solid 2px #6699FF;
+	border: solid 1px #6699FF;
 }
+
 /* style für login-form */
 #start {
 	 background-color: Gainsboro;
@@ -170,7 +172,7 @@ td.sidebar {
 #adrlist {
 	margin: 0;
 	background-color: Gainsboro;
-  width: 90%;
+  width: 95%;
   padding: 1px 3px 1px 4px;
   margin: 2px 0 0 5px;
   font-size: small;
@@ -187,7 +189,7 @@ td.sidebar {
 #adrsuche form {
  	width: 91%;
   /* background-color: Gainsboro; */
-  margin: 0 0 0 5px;
+  margin: 2px 0 0 5px;
   padding: 0;
 }
 
@@ -196,6 +198,10 @@ td.sidebar {
 }
 #adrsuche label {
  	padding: 0;
+}
+
+#adrsuche .export form {
+	margin-bottom: 5px;
 }
 
 #adresse {
@@ -228,12 +234,12 @@ td.sidebar {
 }
 
 #adresse .left input, .left select {
-  width: 270px;
+  width: 275px;
   margin-bottom: 2px;
 }
 
 #adresse .right input, .right select {
-  width: 200px;
+  width: 195px;
   margin-bottom: 2px;
   }
 #adresse p {
@@ -302,4 +308,13 @@ h3 {
 .cmd-line p {
   padding: 0 0 0 5px;
   margin: 0;
+}
+.export form {
+	margin: 8px 0 0 5px;
+}
+.export form  {
+	display: inline;
+}
+.export .excel {
+	margin-left: 14px;
 }

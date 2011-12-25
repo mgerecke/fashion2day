@@ -38,5 +38,8 @@ module Fashion2day
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+
+    # bei Feld-Validation-Fehlern in Formularen nur Feld ausgeben, kein Fehler-Tag anhängen
+  	config.action_view.field_error_proc = proc {|html, instance| html }
   end
 end

@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   def new
   	@title = "Neuer Anwender"
-    @user = User.create
+    @user = User.new
   end
 
   def create

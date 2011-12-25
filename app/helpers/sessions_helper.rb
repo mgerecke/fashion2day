@@ -2,7 +2,13 @@ module SessionsHelper
   include ApplicationHelper
 
   def sign_in(user)
+  	reset_session
   	session[:remember_token] = user.id
+
+    #Suchwerte für Adress-Maske initialisieren
+    session[:spalte] = "1" 		#Suche nach Email
+    session[:search] = ""     #Suchbegriff
+    session[:sort] = "Firma"  #Default-Sortierung nach Firma
   end
 
   def sign_out
