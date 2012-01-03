@@ -206,6 +206,13 @@ td.sidebar {
 
 #adresse {
 	 background-color: Gainsboro;
+}
+#adresse table {
+	margin: 0;
+  padding: 0;
+}
+#adresse table td {
+	 background-color: Gainsboro;
    padding: 1px;
    margin: 0 0 0 2px;
 }
@@ -215,39 +222,32 @@ td.sidebar {
   padding: 0 1em 1em 1em;
 	vertical-align: top;
 }
-
 #adresse .right {
 	float: right;
   padding: 0 1em 1em 1em;
 	vertical-align: top;
 }
 
-#adresse label {
-  display: block;
-  float: left;
-  width: 65px;
-  padding: 5px 0 1px 0;
-  margin: 0;
+#adresse .left input {
+	width: 262px;
+}
+#adresse .left select {
+	width: 262px;
 }
 #adresse .left .small input {
-  width: 40px;
+	width: 40px;
 }
-
-#adresse .left input, .left select {
-  width: 275px;
-  margin-bottom: 2px;
+#adresse .right input {
+	width: 220px;
 }
-
-#adresse .right input, .right select {
-  width: 195px;
-  margin-bottom: 2px;
-  }
+#adresse .right select {
+	width: 220px;
+}
 #adresse p {
   margin: 0 0 0 13px;
   padding: 0;
   font-size: 90%;
 }
-
 #adresse div {
 	margin: 0;
   padding: 0;

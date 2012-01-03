@@ -14,52 +14,85 @@
     	<p>update am <%= german_time(@address.updated_at) %> durch <%= @address.user %></p>
     <% end %>
     <div class="left">
-    	<%= f.label :firma %>
-	    <%= f.text_field :firma %><br />
-	    <%= f.label :nachname, "Name" %>
-	    <%= f.text_field :nachname %><br />
-	    <%= f.label :vorname %>
-	    <%= f.text_field :vorname %><br />
-	    <%= f.label :position %>
-	    <%= f.text_field :position %><br />
-	    <%= f.label :strasse %>
-	    <%= f.text_field :strasse %><br />
-	    <%= f.label :hausnr, "Haus-Nr." %>
-    	<div class="small">
-    		<%= f.text_field :hausnr %>
-    	</div>
-	  	<%= f.label :plz %>
-   		<div class="small">
-	  		<%= f.text_field :plz %>
-    	</div>
-    	<%= f.label :ort %>
-	  	<%= f.text_field :ort %><br />
-	  	<%= f.label :land, "Land" %>
-	  	<%= f.select :land,
-	  			Country.find(:all, :order => :de).collect{|d| [d.de]},
-	  			:prompt => "Bitte waehlen" %><br />
-		</div>
+      <table>
+      	<tr>
+      		<td><%= f.label :firma %></td>
+	    		<td><%= f.text_field :firma %></td>
+      	</tr>
+      	<tr>
+      		<td><%= f.label :nachname, "Name" %></td>
+	    		<td><%= f.text_field :nachname %></td>
+      	</tr>
+      	<tr>
+      		<td><%= f.label :vorname %></td>
+	    		<td><%= f.text_field :vorname %></td>
+      	</tr>
+      	<tr>
+        	<td><%= f.label :position %></td>
+	    		<td><%= f.text_field :position %></td>
+      	</tr>
+        <tr>
+        	<td><%= f.label :strasse %></td>
+      		<td><%= f.text_field :strasse %></td>
+        </tr>
+        <tr>
+         	<td><%= f.label :hausnr, "Haus-Nr." %></td>
+    			<td class="small"><%= f.text_field :hausnr %></td>
+    			</div>
+        </tr>
+        <tr>
+          <td><%= f.label :plz %></td>
+	  			<td class="small"><%= f.text_field :plz %></td>
+    			</div>
+        </tr>
+        <tr>
+    			<td><%= f.label :ort %></td>
+	  			<td><%= f.text_field :ort %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :land, "Land" %></td>
+	  			<td><%= f.select :land,
+	  					Country.find(:all, :order => :de).collect{|d| [d.de]},
+	  					:prompt => "Bitte waehlen" %></td>
+      	</tr>
+      </table>
+    </div>
   	<div class="right">
-  		<%= f.label :category, "Kategorie" %>
-	  	<%= f.select :category_id,
-	  			Category.find(:all, :order => :name).collect{|d| [d.name, d.id]},
-	  			:prompt => "Bitte waehlen" %><br />
-    	<%= f.label :subcategory, "Sub-Kat." %>
-	    <%= f.select :subcategory_id,
-	          Subcategory.find(:all, :order => :name).collect{|d| [d.name, d.id]},
-	          :prompt => "Bitte waehlen" %><br />
-	    <%= f.label :fon, 'Telefon' %>
-	    <%= f.text_field :fon %><br />
-	    <%= f.label :fax %>
-	    <%= f.text_field :fax %><br />
-	    <%= f.label :email %>
-	    <%= f.text_field :email %><br />
-	    <%= f.label :web %>
-	    <%= f.text_field :web %><br />
-	    <%= f.label :briefkontakt, "Brief" %>
-	    <%= f.select :briefkontakt,
-	    			Lettercontact.find(:all, :order => :description).collect{|d| [d.description]},
-	  				:prompt => "Bitte waehlen" %><br />
+    	<table>
+				<tr>
+  				<td><%= f.label :category, "Kategorie" %></td>
+      	  <td><%= f.select :category_id,
+		      		Category.find(:all, :order => :name).collect{|d| [d.name, d.id]},
+	            :prompt => "Bitte waehlen" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :subcategory, "Sub-Kat." %></td>
+	        <td><%= f.select :subcategory_id,
+	              	Subcategory.find(:all, :order => :name).collect{|d| [d.name, d.id]},
+	              	:prompt => "Bitte waehlen" %></td>
+         <tr>
+          	<td><%= f.label :fon, 'Telefon' %></td>
+	        	<td><%= f.text_field :fon %></td>
+         </tr>
+         <tr>
+          	<td><%= f.label :fax %></td>
+	        	<td><%= f.text_field :fax %></td>
+         </tr>
+         <tr>
+          	<td><%= f.label :email %></td>
+	        	<td><%= f.text_field :email %></td>
+         </tr>
+         <tr>
+          	<td><%= f.label :web %></td>
+	        	<td><%= f.text_field :web %></td>
+         </tr>
+         <tr>
+          	<td><%= f.label :briefkontakt, "Brief" %></td>
+	        	<td><%= f.select :briefkontakt,
+	              Lettercontact.find(:all, :order => :description).collect{|d| [d.description]},
+	        			:prompt => "Bitte waehlen" %></td>
+      	 </tr>
+      </table>
     </div>
   	<div class="go">
   		<%= f.submit "speichern" %>

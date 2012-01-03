@@ -1,0 +1,80 @@
+<%= form_for(@address) do |f| %>
+	<% if @address.errors.any? %>
+  	<div id="error_explanation">
+  		<p>Speicherung der Adresse wurde verhindert: <%= @address.errors.count %> Fehler </p>
+			<ul>
+  			<% @address.errors.full_messages.each do |msg| %>
+    			<li><%= msg %></li>
+  			<% end %>
+			</ul>
+  	</div>
+  <% end %>
+	<div id="adresse">
+    <% if !@address.new_record? %>
+    	<p>update am <%= german_time(@address.updated_at) %> durch <%= @address.user %></p>
+    <% end %>
+    <table>
+			<tr>
+	      <td><%= f.label :firma %></td>
+	      <td><%= f.text_field :firma %></td>
+        <td><%= f.label :category, "Kategorie" %></td>
+	  		<td><%= f.select :category_id,
+	  				Category.find(:all, :order => :name).collect{|d| [d.name, d.id]},
+	  				:prompt => "Bitte waehlen" %></td>
+      </tr>
+      <tr>
+				<td><%= f.label :nachname, "Name" %></td>
+		    <td><%= f.text_field :nachname %></td>
+        <td><%= f.label :subcategory, "Sub-Kat." %></td>
+	    	<td><%= f.select :subcategory_id,
+	          		Subcategory.find(:all, :order => :name).collect{|d| [d.name, d.id]},
+	          	:prompt => "Bitte waehlen" %></td>
+			</tr>
+      <tr>
+      	<td><%= f.label :vorname %></td>
+	    	<td><%= f.text_field :vorname %></td>
+        <td><%= f.label :fon, 'Telefon' %></td>
+		    <td><%= f.text_field :fon %></td>
+      </tr>
+      <tr>
+      	<td><%= f.label :position %></td>
+			  <td><%= f.text_field :position %></td>
+        <td><%= f.label :fax %></td>
+	   	 	<td><%= f.text_field :fax %></td>
+      </tr>
+      <tr>
+      	<td><%= f.label :strasse %></td>
+	    	<td><%= f.text_field :strasse %></td>
+      	<td><%= f.label :email %></td>
+	    	<td><%= f.text_field :email %></td>
+      </tr>
+      <tr>
+      	<td><%= f.label :hausnr, "Haus-Nr." %></td>
+		    <td><%= f.text_field :hausnr %></td>
+        <td><%= f.label :web %></td>
+			  <td><%= f.text_field :web %></td>
+      </tr>
+      <tr>
+      	<td><%= f.label :plz %></td>
+	  		<td><%= f.text_field :plz %></td>
+        <td><%= f.label :briefkontakt, "Brief" %></td>
+		    <td><%= f.select :briefkontakt,
+	    					Lettercontact.find(:all, :order => :description).collect{|d| [d.description]},
+	  						:prompt => "Bitte waehlen" %></td>
+      </tr>
+      <tr>
+      	<td><%= f.label :ort %></td>
+	  		<td><%= f.text_field :ort %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :land, "Land" %></td>
+	  		<td><%= f.select :land,
+	  			Country.find(:all, :order => :de).collect{|d| [d.de]},
+	  			:prompt => "Bitte waehlen" %></td>
+      </tr>
+    </table>
+  	<div class="go">
+  		<%= f.submit "speichern" %>
+  	</div>
+	</div>
+<% end %>
