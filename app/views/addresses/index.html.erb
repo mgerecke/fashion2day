@@ -27,18 +27,17 @@
   	<% end %>
   </span
 </div>
-<div class="digg_pagination">
-	<%= will_paginate  %>
-</div>
 <div id="adrlist">
 	<table>
 		<% @addresses.each do |address| %>
   	  <tr>
 	      <td><%= link_to address.firma, edit_address_path(address) %></td>
 	      <td class="sidebar">
-	      <strong><%= address.vorname %>&nbsp;<%= address.nachname %></strong><br />
+	      <strong><%= address.vorname %>&nbsp;<%= address.nachname %>&nbsp;&nbsp;
+        	<span class="loesch" %><%= link_to 'entfernen', address,
+        			:method => 'delete', :confirm => "Adresse entfernen?" , :title => "Adresse loeschen" %></span></strong><br />
 	      <%= address.subcategory.name %><br />
-	      <%= mail_to address.email, address.email %><br />
+	      <%= mail_to address.email, address.email, :title => "Email senden" %><br />
 	      </td>
 	    </tr>
 		<% end %>

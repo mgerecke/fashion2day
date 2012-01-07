@@ -101,6 +101,15 @@ td.sidebar {
 	padding: 1em;
 	vertical-align: top;
 }
+td.sidebar .loesch a {
+	font-size: 80%;
+}
+
+td.sidebar .loesch a:hover {
+	text-decoration: none;
+	color: #A22448;
+
+}
 
 #facebook img {
   padding: 0;
@@ -234,7 +243,9 @@ td.sidebar {
 #adresse .left select {
 	width: 262px;
 }
+
 #adresse .left .small input {
+	text-align: right;
 	width: 40px;
 }
 #adresse .right input {

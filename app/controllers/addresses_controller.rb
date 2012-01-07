@@ -13,7 +13,7 @@ class AddressesController < ApplicationController
 
   	@lookups = Lookup.all
     @sorts = Sort.all
-    @addresses = Address.search(params[:search], params[:spalte], params[:sort]).paginate(:page => params[:page], :per_page => 15)
+    @addresses = Address.search(params[:search], params[:spalte], params[:sort]).paginate(:page => params[:page], :per_page => 10)
 
     # Auswahl merken für Folge-Aktionen (Wiederaufruf der Adress-Maske)
     session[:spalte] = @curselected
@@ -73,8 +73,10 @@ class AddressesController < ApplicationController
   # DELETE /addresses/1
   def destroy
     @address = Address.find(params[:id])
+    cuser = User.find(current_user)
+    write_log(cuser)
     @address.destroy
-    flash[:notice] = "Adresse wurde geloescht!"
+    flash[:notice] = "Die Adresse wurde geloescht!"
     redirect_to addresses_path
   end
 
@@ -125,5 +127,15 @@ class AddressesController < ApplicationController
 	  content = BOM + Iconv.conv("utf-16le", "utf-8", content)
 	  send_data content, :type => 'text/csv; header=present', :filename => filename
     flash.now[:notice] = "Adressen wurden gesendet!"
-	  end
+	end
+
+  def write_log(cuser) # log-Eintrag schreiben beim Loeschen
+		log = Dblog.new
+		log.function = 'Delete'
+		log.data = @address.firma + " " + @address.vorname + " " + @address.nachname  + " " + @address.email +
+          " " + @address.strasse + " " + @address.hausnr + " " + @address.plz + " " + @address.ort + " " + @address.fon
+		log.user = cuser.name
+		log.save
+  end
+
 end

@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def index
 		@title = "Anwender-Liste"
-    @users = User.find(:all)
+    @users = User.find(:all, :order => 'name')
   end
 
   def new
